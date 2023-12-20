@@ -1,3 +1,4 @@
+import logging
 import google.generativeai as genai
 from aiogram import Dispatcher, Bot
 from aiogram.types import Message
@@ -17,7 +18,7 @@ WEB_SERVER_HOST = "https://nuthatch.onrender.com"
 # Порты сервера: 8300-8499
 WEB_SERVER_PORT = 8080
 # Путь к маршруту вебхука, по которому Telegram будет отправлять запросы
-WEBHOOK_PATH = f"/webhook/{BOT_TOKEN}"
+WEBHOOK_PATH = ""
 # Базовый URL-адрес вебхука, который будет исп-ся для создания URL-адреса вебхука для Telegram
 BASE_WEBHOOK_URL = f"{WEB_SERVER_HOST}{WEBHOOK_PATH}"
 # На сервере только IPv6 (аналог ip4: 0.0.0.0)
@@ -69,9 +70,10 @@ def main():
     setup_application(app, dp, bot=bot)
 
     # Запускаем веб-сервер
-    web.run_app(app, host=WEBAPP_HOST, port=WEB_SERVER_PORT)
+    web.run_app(app, host=WEBAPP_HOST)
 
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     main()
