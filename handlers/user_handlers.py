@@ -14,6 +14,7 @@ from lexicon.lexicon import LEXICON
 router = Router()
 
 # Получаем API-ключ и ключ бота из конфига(через переменные окружения)
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 API_KEY = os.getenv("API_KEY")
 
 genai.configure(api_key=API_KEY)
@@ -94,7 +95,7 @@ async def get_send_photo(message: Message, largest_photo: PhotoSize, bot):
             text = LEXICON["picture_response"]
         # Получаем путь до изображения
         file = await bot.get_file(file_id=largest_photo.file_id)
-        file_path = f"https://api.telegram.org/file/bot{config.tgbot.token}/{file.file_path}"
+        file_path = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file.file_path}"
         img_response = requests.get(file_path, stream=True).raw
 
         await bot.send_chat_action(message.chat.id, action="typing")
