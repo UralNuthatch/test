@@ -15,7 +15,7 @@ API_KEY = getenv('API_KEY')
 # Настройки веб-сервера
 WEB_SERVER_HOST = "https://nuthatch.onrender.com"
 # Порты сервера: 8300-8499
-WEB_SERVER_PORT = "8080"
+WEB_SERVER_PORT = 8080
 # Путь к маршруту вебхука, по которому Telegram будет отправлять запросы
 WEBHOOK_PATH = f"/webhook/{BOT_TOKEN}"
 # Базовый URL-адрес вебхука, который будет исп-ся для создания URL-адреса вебхука для Telegram
