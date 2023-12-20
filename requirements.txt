@@ -21,6 +21,7 @@ idna==3.6
 magic-filter==1.0.12
 multidict==6.0.4
 numpy==1.26.2
+Pillow==10.1.0
 proto-plus==1.23.0
 protobuf==4.25.1
 pyasn1==0.5.1
