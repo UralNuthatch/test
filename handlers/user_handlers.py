@@ -25,7 +25,7 @@ genai.configure(api_key=API_KEY)
 async def process_start_command(message: Message):
     text = LEXICON["/start"]
     try:
-        file_id = "AgACAgIAAxkBAAIFUWV65ZX6qF_21NsZnMzZ_rw1-WWPAAKP0TEbFd3YS9XO5YHx7CH6AQADAgADeAADMwQ"
+        file_id = "AgACAgIAAxkBAAMDZYKqqlK2yZnPi73VTJlJY39j0AUAAk7RMRt3NRFIn_sb0LI9nuUBAAMCAAN4AAMzBA"
         await message.answer_photo(file_id, caption=text)
     except:
         await message.answer(text)
