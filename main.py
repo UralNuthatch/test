@@ -8,20 +8,21 @@ from os import getenv
 
 
 
+BOT_TOKEN = getenv('BOT_TOKEN')
+API_KEY = getenv('API_KEY')
+
+
 # Настройки веб-сервера
 WEB_SERVER_HOST = "https://nuthatch.onrender.com"
 # Порты сервера: 8300-8499
-WEB_SERVER_PORT = "8350"
+WEB_SERVER_PORT = "8080"
 # Путь к маршруту вебхука, по которому Telegram будет отправлять запросы
-WEBHOOK_PATH = ""
+WEBHOOK_PATH = f"/webhook/{BOT_TOKEN}"
 # Базовый URL-адрес вебхука, который будет исп-ся для создания URL-адреса вебхука для Telegram
 BASE_WEBHOOK_URL = f"{WEB_SERVER_HOST}{WEBHOOK_PATH}"
 # На сервере только IPv6 (аналог ip4: 0.0.0.0)
-WEBAPP_HOST = "::"
+WEBAPP_HOST = "0.0.0.0"
 
-
-BOT_TOKEN = getenv('BOT_TOKEN')
-API_KEY = getenv('API_KEY')
 
 bot = Bot(BOT_TOKEN)
 dp = Dispatcher()
@@ -68,7 +69,7 @@ def main():
     setup_application(app, dp, bot=bot)
 
     # Запускаем веб-сервер
-    web.run_app(app, host=WEBAPP_HOST)
+    web.run_app(app, host=WEBAPP_HOST, port=WEB_SERVER_PORT)
 
 
 
