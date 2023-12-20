@@ -34,5 +34,4 @@ async def send_echo(message: Message):
 
 
 if __name__ == '__main__':
-    bot.delete_webhook(drop_pending_updates=True)
     dp.run_polling(bot)
