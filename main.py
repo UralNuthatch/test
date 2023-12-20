@@ -5,6 +5,7 @@ from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_applicati
 from aiohttp import web
 from os import getenv
 from handlers import user_handlers, other_handlers
+from keyboards.set_menu import set_main_menu
 
 
 
@@ -45,6 +46,9 @@ async def on_startup(bot: Bot) -> None:
 def main():
     # Register startup hook to initialize webhook
     dp.startup.register(on_startup)
+
+    # Устанавливаем главное меню
+    dp.startup.register(set_main_menu)
 
     # Create aiohttp.web.Application instance
     app = web.Application()
